@@ -1,26 +1,56 @@
-
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowLeft, Maximize2, Bed, Bath } from 'lucide-react';
+import { motion } from "framer-motion"
+import { ArrowLeft, Bath, Bed, Maximize2 } from "lucide-react"
+import React from "react"
 
 interface BuildingDetailProps {
   building: {
-    id: string;
-    name: string;
-    location: string;
-    brief: string;
-    img: string;
-  };
-  onBack: () => void;
+    id: string
+    name: string
+    location: string
+    brief: string
+    img: string
+  }
+  onBack: () => void
 }
 
-const BuildingDetail: React.FC<BuildingDetailProps> = ({ building, onBack }) => {
+const BuildingDetail: React.FC<BuildingDetailProps> = ({
+  building,
+  onBack,
+}) => {
   const units = [
-    { id: 1, type: 'Gallery Studio', size: '720 SQFT', bed: 1, bath: 1, price: '$890,000' },
-    { id: 2, type: 'Executive Suite', size: '1,450 SQFT', bed: 2, bath: 2, price: '$1,850,000' },
-    { id: 3, type: 'Sky Residence', size: '2,100 SQFT', bed: 3, bath: 3, price: '$2,900,000' },
-    { id: 4, type: 'Grand Penthouse', size: '5,800 SQFT', bed: 6, bath: 6, price: '$12,400,000' },
-  ];
+    {
+      id: 1,
+      type: "Gallery Studio",
+      size: "720 SQFT",
+      bed: 1,
+      bath: 1,
+      price: "$890,000",
+    },
+    {
+      id: 2,
+      type: "Executive Suite",
+      size: "1,450 SQFT",
+      bed: 2,
+      bath: 2,
+      price: "$1,850,000",
+    },
+    {
+      id: 3,
+      type: "Sky Residence",
+      size: "2,100 SQFT",
+      bed: 3,
+      bath: 3,
+      price: "$2,900,000",
+    },
+    {
+      id: 4,
+      type: "Grand Penthouse",
+      size: "5,800 SQFT",
+      bed: 6,
+      bath: 6,
+      price: "$12,400,000",
+    },
+  ]
 
   return (
     <motion.div
@@ -29,73 +59,98 @@ const BuildingDetail: React.FC<BuildingDetailProps> = ({ building, onBack }) => 
       exit={{ opacity: 0 }}
       className="min-h-screen bg-white"
     >
-      <div className="max-w-7xl mx-auto px-8 py-20">
-        <button 
+      <div className="mx-auto max-w-7xl px-8 py-20">
+        <button
           onClick={onBack}
-          className="flex items-center space-x-4 mb-16 text-xs uppercase tracking-widest font-bold hover:opacity-50 transition-all text-neutral-400"
+          className="mb-16 flex items-center space-x-4 text-xs font-bold tracking-widest text-neutral-400 uppercase transition-all hover:opacity-50"
         >
-          <ArrowLeft className="w-4 h-4" />
+          <ArrowLeft className="h-4 w-4" />
           <span>Return to Portfolio</span>
         </button>
 
-        <div className="grid lg:grid-cols-2 gap-32 mb-32">
+        <div className="mb-32 grid gap-32 lg:grid-cols-2">
           <div className="sticky top-40 h-fit">
-            <span className="text-[10px] uppercase tracking-[0.5em] text-neutral-300 mb-6 block font-bold">{building.id} / Landmark</span>
-            <h1 className="text-7xl md:text-9xl font-serif mb-10 tracking-tighter leading-none">{building.name}</h1>
-            
-            <div className="flex items-center space-x-4 mb-10">
-              <div className="w-12 h-[1px] bg-black"></div>
-              <p className="text-[11px] uppercase tracking-[0.4em] font-bold">{building.location}</p>
+            <span className="mb-6 block text-[10px] font-bold tracking-[0.5em] text-neutral-300 uppercase">
+              {building.id} / Landmark
+            </span>
+            <h1 className="mb-10 font-serif text-7xl leading-none tracking-tighter md:text-9xl">
+              {building.name}
+            </h1>
+
+            <div className="mb-10 flex items-center space-x-4">
+              <div className="h-[1px] w-12 bg-black"></div>
+              <p className="text-[11px] font-bold tracking-[0.4em] uppercase">
+                {building.location}
+              </p>
             </div>
 
-            <p className="text-xl text-neutral-500 font-light leading-relaxed mb-16 max-w-lg">
+            <p className="mb-16 max-w-lg text-xl leading-relaxed font-light text-neutral-500">
               {building.brief}
             </p>
 
-            <div className="grid grid-cols-2 gap-12 pt-12 border-t border-neutral-100">
+            <div className="grid grid-cols-2 gap-12 border-t border-neutral-100 pt-12">
               <div>
-                <p className="text-[10px] uppercase tracking-widest opacity-40 mb-3 font-bold">Availability</p>
-                <p className="text-xl font-serif">Limited Release</p>
+                <p className="mb-3 text-[10px] font-bold tracking-widest uppercase opacity-40">
+                  Availability
+                </p>
+                <p className="font-serif text-xl">Limited Release</p>
               </div>
               <div>
-                <p className="text-[10px] uppercase tracking-widest opacity-40 mb-3 font-bold">Architect</p>
-                <p className="text-xl font-serif">Elena Voss Atelier</p>
+                <p className="mb-3 text-[10px] font-bold tracking-widest uppercase opacity-40">
+                  Architect
+                </p>
+                <p className="font-serif text-xl">Elena Voss Atelier</p>
               </div>
             </div>
-            
-            <button className="mt-20 w-full md:w-auto px-16 py-6 bg-black text-white text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-neutral-800 transition-colors shadow-2xl">
+
+            <button className="mt-20 w-full bg-black px-16 py-6 text-[10px] font-bold tracking-[0.3em] text-white uppercase shadow-2xl transition-colors hover:bg-neutral-800 md:w-auto">
               Request Brochure
             </button>
           </div>
 
           <div>
-            <div className="aspect-[3/4] bg-neutral-100 mb-24 overflow-hidden shadow-2xl transition-all duration-1000">
-              <img src={building.img} alt={building.name} className="w-full h-full object-cover scale-105 hover:scale-100 transition-transform duration-[3s]" />
+            <div className="mb-24 aspect-[3/4] overflow-hidden bg-neutral-100 shadow-2xl transition-all duration-1000">
+              <img
+                src={building.img}
+                alt={building.name}
+                className="h-full w-full scale-105 object-cover transition-transform duration-[3s] hover:scale-100"
+              />
             </div>
-            
-            <h3 className="text-3xl font-serif mb-12">Select Units</h3>
+
+            <h3 className="mb-12 font-serif text-3xl">Select Units</h3>
             <div className="space-y-6">
               {units.map((u) => (
-                <div key={u.id} className="group p-10 border border-neutral-100 hover:shadow-xl transition-all duration-500 cursor-pointer bg-white">
-                  <div className="flex justify-between items-start mb-10">
+                <div
+                  key={u.id}
+                  className="group cursor-pointer border border-neutral-100 bg-white p-10 transition-all duration-500 hover:shadow-xl"
+                >
+                  <div className="mb-10 flex items-start justify-between">
                     <div>
-                      <h4 className="text-2xl font-serif mb-2">{u.type}</h4>
-                      <p className="text-[10px] uppercase tracking-widest text-neutral-300 font-bold">{u.size}</p>
+                      <h4 className="mb-2 font-serif text-2xl">{u.type}</h4>
+                      <p className="text-[10px] font-bold tracking-widest text-neutral-300 uppercase">
+                        {u.size}
+                      </p>
                     </div>
                     <span className="text-xl font-light">{u.price}</span>
                   </div>
-                  <div className="flex space-x-12 pt-8 border-t border-neutral-50">
+                  <div className="flex space-x-12 border-t border-neutral-50 pt-8">
                     <div className="flex items-center space-x-3 text-neutral-400">
-                      <Bed className="w-4 h-4 stroke-[1px]" />
-                      <span className="text-[10px] uppercase tracking-widest font-bold">{u.bed} Beds</span>
+                      <Bed className="h-4 w-4 stroke-[1px]" />
+                      <span className="text-[10px] font-bold tracking-widest uppercase">
+                        {u.bed} Beds
+                      </span>
                     </div>
                     <div className="flex items-center space-x-3 text-neutral-400">
-                      <Bath className="w-4 h-4 stroke-[1px]" />
-                      <span className="text-[10px] uppercase tracking-widest font-bold">{u.bath} Baths</span>
+                      <Bath className="h-4 w-4 stroke-[1px]" />
+                      <span className="text-[10px] font-bold tracking-widest uppercase">
+                        {u.bath} Baths
+                      </span>
                     </div>
                     <div className="flex items-center space-x-3 text-neutral-400">
-                      <Maximize2 className="w-4 h-4 stroke-[1px]" />
-                      <span className="text-[10px] uppercase tracking-widest font-bold">{u.size}</span>
+                      <Maximize2 className="h-4 w-4 stroke-[1px]" />
+                      <span className="text-[10px] font-bold tracking-widest uppercase">
+                        {u.size}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -105,7 +160,7 @@ const BuildingDetail: React.FC<BuildingDetailProps> = ({ building, onBack }) => 
         </div>
       </div>
     </motion.div>
-  );
-};
+  )
+}
 
-export default BuildingDetail;
+export default BuildingDetail
