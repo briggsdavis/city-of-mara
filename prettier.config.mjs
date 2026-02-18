@@ -1,7 +1,7 @@
 const config = {
   semi: false,
   plugins: ["prettier-plugin-organize-imports", "prettier-plugin-tailwindcss"],
-  tailwindStylesheet: "index.css",
+  tailwindStylesheet: "src/styles/base.css",
 }
 
 export default config
